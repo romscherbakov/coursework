@@ -128,7 +128,7 @@
    ```bash
    mysql -u alicemsql -p autosalon21 < /home/alice/autosalon21.sql
    ```
-   - Введите пароль пользователя `alicemsql` (например, `alice`).
+   - Введите пароль пользователя в MySQL `alicemsql` (например, `MyStr0ngP@ss!2025`).
    - Если ошибок нет — база успешно создана!
 
 ---
@@ -167,4 +167,5 @@
 > - Пользователь `vboxuser` с паролем `changeme` и правами sudo
 
 ---
+
 
