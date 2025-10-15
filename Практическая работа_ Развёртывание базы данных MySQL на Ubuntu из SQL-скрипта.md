@@ -80,10 +80,11 @@
 2. Создайте **свою базу данных** (имя должно совпадать с именем из Workbench!):
    ```sql
    CREATE DATABASE autosalon21 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   SHOW DATABASES;
    ```
 3. Создайте **пользователя только для своей базы** (разрешите подключение с любого хоста `%`):
    ```sql
-   CREATE USER 'alicemsql'@'%' IDENTIFIED BY 'alice';
+   CREATE USER 'alicemsql'@'%' IDENTIFIED BY 'MyStr0ngP@ss!2025';
    GRANT ALL PRIVILEGES ON autosalon21.* TO 'alicemsql'@'%';
    FLUSH PRIVILEGES;
    EXIT;
@@ -125,7 +126,7 @@
 
 6. Разверните базу данных:
    ```bash
-   mysql -u alicemsql -p autosalon21 < autosalon21.sql
+   mysql -u alicemsql -p autosalon21 < /home/alice/autosalon21.sql
    ```
    - Введите пароль пользователя `alicemsql` (например, `alice`).
    - Если ошибок нет — база успешно создана!
@@ -166,3 +167,4 @@
 > - Пользователь `vboxuser` с паролем `changeme` и правами sudo
 
 ---
+
