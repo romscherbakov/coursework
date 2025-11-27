@@ -168,44 +168,12 @@ SET column1 = value1, column2 = value2, ...
 WHERE condition;
 ```
 
-#### Практические примеры для нашей БД:
-```sql
--- Обновление отдела сотрудников
-UPDATE workers SET department_id = 3 WHERE department_id = 2;
-
--- Обновление тегов
-UPDATE tags SET name = 'поддержка' WHERE name = 'саппорт';
-
--- Обновление статуса задач
-UPDATE tasks SET done = 1 WHERE project_id = 1;
-
--- Обновление с арифметической операцией
-UPDATE salaries SET salary = salary + 200 WHERE date > '2020-02-29';
-
--- Обновление с использованием CONCAT
-UPDATE projects SET name = CONCAT(name, ' (архив)') WHERE name LIKE '%Юнитраст%';
-```
 
 ### 🗑️ Команда DELETE
 
 #### Базовый синтаксис:
 ```sql
 DELETE FROM table_name WHERE condition;
-```
-
-#### Практические примеры для нашей БД:
-```sql
--- Удаление по условию даты и статуса
-DELETE FROM tasks WHERE created_at < '2020-02-01' AND done = 1;
-
--- Удаление конкретного тега
-DELETE FROM tags WHERE name = 'кнопки';
-
--- Удаление с исключением
-DELETE FROM salaries WHERE MONTH(date) = 3 AND worker_id != 11;
-
--- Удаление всех записей (ОЧЕНЬ ОПАСНО!)
-DELETE FROM tasks;
 ```
 
 ---
@@ -337,3 +305,4 @@ SELECT * FROM salaries WHERE MONTH(date) = 3;
 ---
 
 **Удачи в выполнении заданий! 🚀**
+
