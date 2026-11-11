@@ -1,4 +1,4 @@
-# Лабораторная работа № 5 - Установка и первоначальная настройка Docker в Ubuntu
+# Лабораторная работа № 5 — Установка и первоначальная настройка Docker в Ubuntu
 
 ## Цель работы
 
@@ -86,6 +86,8 @@ dpkg --print-architecture
 
 ### 2.1. Подготовка системы
 
+Выполните команды:
+
 ```bash
 sudo apt update
 sudo apt install ca-certificates curl
@@ -99,6 +101,8 @@ sudo apt install ca-certificates curl
 
 ### 2.2. Добавление ключа Docker
 
+Выполните команды:
+
 ```bash
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
@@ -109,26 +113,74 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 ### 2.3. Добавление официального репозитория
 
-Выполните команду целиком:
+Для установки Docker необходимо добавить его официальный репозиторий в список источников пакетов Ubuntu.
+
+**Шаг 1. Определение кодового имени Ubuntu**
+
+Выполните команду:
 
 ```bash
-sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
-Types: deb
-URIs: https://download.docker.com/linux/ubuntu
-Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
-Components: stable
-Architectures: $(dpkg --print-architecture)
-Signed-By: /etc/apt/keyrings/docker.asc
-EOF
+. /etc/os-release && echo "$VERSION_CODENAME"
 ```
 
-Обновите сведения о пакетах:
+Запомните полученное значение.
+
+Например:
+- Ubuntu 24.04 — `noble`;
+- Ubuntu 22.04 — `jammy`.
+
+**Шаг 2. Определение архитектуры системы**
+
+Выполните команду:
+
+```bash
+dpkg --print-architecture
+```
+
+Запомните полученное значение. Для типовой виртуальной машины на ПК это `amd64`.
+
+**Шаг 3. Создание файла репозитория**
+
+Откройте файл конфигурации в текстовом редакторе:
+
+```bash
+sudo nano /etc/apt/sources.list.d/docker.sources
+```
+
+Скопируйте приведённый ниже текст и вставьте его в открытый редактор:
+
+```ini
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: noble
+Components: stable
+Architectures: amd64
+Signed-By: /etc/apt/keyrings/docker.asc
+```
+
+**Важно:** замените `noble` на кодовое имя своей версии Ubuntu, полученное на шаге 1, а `amd64` — на архитектуру, полученную на шаге 2.
+
+**Шаг 4. Сохранение файла**
+
+В редакторе `nano`:
+
+1. Нажмите `Ctrl + O` для сохранения файла.
+2. Нажмите `Enter` для подтверждения имени файла.
+3. Нажмите `Ctrl + X` для выхода из редактора.
+
+**Шаг 5. Обновление списка пакетов**
+
+Выполните команду:
 
 ```bash
 sudo apt update
 ```
 
+Если команда завершилась без ошибок, официальный репозиторий Docker добавлен успешно.
+
 ### 2.4. Установка компонентов Docker
+
+Выполните команду:
 
 ```bash
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
