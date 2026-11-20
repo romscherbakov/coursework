@@ -233,10 +233,9 @@ docker compose exec mysql mysql -uuser -p test3
 
 ### 5.1. Проверка разрешённой операции SELECT
 
-Выполните (два запроса):
+Выполните:
 
 ```sql
-SET NAMES utf8mb4;
 SELECT * FROM workers LIMIT 10;
 ```
 
@@ -247,8 +246,8 @@ SELECT * FROM workers LIMIT 10;
 Попробуйте добавить новую запись:
 
 ```sql
-INSERT INTO workers (name)
-VALUES ('Тестовый сотрудник');
+INSERT INTO workers (department_id, name)
+VALUES (1, 'Тестовый сотрудник');
 ```
 
 Ожидаемый результат: MySQL возвращает ошибку недостаточных привилегий.
@@ -267,7 +266,7 @@ ERROR 1142 (42000): INSERT command denied to user 'user'@'...'
 
 ```sql
 UPDATE workers
-SET name = 'Новое имя'
+SET name = 'Тестовый сотрудник'
 WHERE id = 1;
 ```
 
@@ -319,8 +318,8 @@ SELECT * FROM workers LIMIT 10;
 Добавьте тестовую запись:
 
 ```sql
-INSERT INTO workers (name)
-VALUES ('Тестовый сотрудник');
+INSERT INTO workers (department_id, name)
+VALUES (1,'Тестовый сотрудник');
 ```
 
 Операция должна выполниться успешно.
