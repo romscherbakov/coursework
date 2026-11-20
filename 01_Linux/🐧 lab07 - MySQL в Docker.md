@@ -189,6 +189,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
       TZ: Asia/Novosibirsk
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
 
     secrets:
       - mysql_root_password
