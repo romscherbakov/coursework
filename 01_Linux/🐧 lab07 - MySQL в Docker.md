@@ -52,14 +52,14 @@ df -h /mnt/raid1
 Создайте каталог проекта:
 
 ```bash
-sudo mkdir -p /opt/mysql/config
-sudo mkdir -p /opt/mysql/secrets
+sudo mkdir -p -v /opt/mysql/config
+sudo mkdir -p -v /opt/mysql/secrets
 ```
 
 Создайте каталог для хранения данных СУБД на RAID-1:
 
 ```bash
-sudo mkdir -p /mnt/raid1/mysql/data
+sudo mkdir -p -v /mnt/raid1/mysql/data
 ```
 
 В результате должна получиться следующая структура:
@@ -102,8 +102,8 @@ sudo sh -c 'printf "%s" "YourStrongPassword123!" > /opt/mysql/secrets/mysql_root
 Ограничим доступ к каталогу и файлу:
 
 ```bash
-sudo chmod 700 /opt/mysql/secrets
-sudo chmod 600 /opt/mysql/secrets/mysql_root_password.txt
+sudo chmod -v 700 /opt/mysql/secrets
+sudo chmod -v 600 /opt/mysql/secrets/mysql_root_password.txt
 ```
 
 Вместо `YourStrongPassword123!` необходимо использовать собственный пароль.
@@ -317,6 +317,7 @@ docker compose pull
 Запустите контейнер в фоновом режиме:
 
 ```bash
+cd /opt/mysql
 docker compose up -d
 ```
 
