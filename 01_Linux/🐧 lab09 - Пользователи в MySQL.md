@@ -119,7 +119,7 @@ CREATE USER 'admin'@'%' IDENTIFIED BY 'AdminPassword123!';
 
 ### 2.3. Проверка созданных пользователей
 
-Выполните:
+Выполните (это один запрос, копируем весь блок, вставляем в mysql и жмем Enter):
 
 ```sql
 SELECT user, host
@@ -233,9 +233,10 @@ docker compose exec mysql mysql -uuser -p test3
 
 ### 5.1. Проверка разрешённой операции SELECT
 
-Выполните:
+Выполните (два запроса):
 
 ```sql
+SET NAMES utf8mb4;
 SELECT * FROM workers LIMIT 10;
 ```
 
