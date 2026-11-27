@@ -96,13 +96,13 @@ exit;
 Выполните:
 
 ```bash
-sudo mkdir -p /opt/mysql/backup
+sudo mkdir -p -v /opt/mysql/backup
 ```
 
-Ограничим доступ к каталогу:
+Настроим доступ к каталогу:
 
 ```bash
-sudo chmod 700 /opt/mysql/backup
+sudo chmod 755 -v /opt/mysql/backup
 ```
 
 Проверим результат:
@@ -400,13 +400,13 @@ tail -n +8
 Выполните:
 
 ```bash
-sudo chown root:root /opt/mysql/backup_mysql.sh
+sudo chown -v root:root /opt/mysql/backup_mysql.sh
 ```
 
 Установите права:
 
 ```bash
-sudo chmod 700 /opt/mysql/backup_mysql.sh
+sudo chmod -v 700 /opt/mysql/backup_mysql.sh
 ```
 
 Проверьте результат:
