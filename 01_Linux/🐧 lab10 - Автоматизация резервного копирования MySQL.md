@@ -560,7 +560,7 @@ sudo crontab -e
 В конец файла добавьте строку:
 
 ```cron
-0 2 * * * /opt/mysql/backup_mysql.sh
+*/3 * * * * /opt/mysql/backup_mysql.sh
 ```
 
 Сохраните изменения и выйдите из редактора.
@@ -570,7 +570,7 @@ sudo crontab -e
 Строка:
 
 ```cron
-0 2 * * * /opt/mysql/backup_mysql.sh
+*/3 * * * * /opt/mysql/backup_mysql.sh
 ```
 
 состоит из пяти временных параметров и команды.
@@ -605,4 +605,4 @@ sudo crontab -l
 В результате должна отобразиться добавленная строка:
 
 ```cron
-0 2 * * * /opt
+*/3 * * * * /opt
